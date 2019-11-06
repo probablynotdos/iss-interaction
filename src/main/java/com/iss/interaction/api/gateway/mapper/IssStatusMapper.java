@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 public class IssStatusMapper {
 
     public IssStatusResource toResource(String content) {
-        ObjectMapper mapper  = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
         IssStatusResource resource = new IssStatusResource();
 
         try {
             resource = mapper.readValue(content, IssStatusResource.class);
         } catch (Exception e) {
-         log.error("Error while converting Iss API response");
+            log.error("Error while converting Iss API response");
         }
 
         return resource;

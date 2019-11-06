@@ -1,9 +1,7 @@
 package com.iss.interaction.api.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
-import lombok.Value;
 
 @Data
 public class IssStatusResource {
