@@ -8,8 +8,9 @@ import org.springframework.context.annotation.PropertySource;
 @Data
 @Configuration
 @PropertySource("classpath:iss.properties")
-@ConfigurationProperties(prefix = "iss")
+@ConfigurationProperties(prefix = "iss.uri")
 public class AppConfig {
 
-    private String uri;
+    private String location;
+    private String astronaut;
 }

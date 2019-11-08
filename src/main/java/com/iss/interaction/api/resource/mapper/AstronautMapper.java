@@ -1,20 +1,20 @@
-package com.iss.interaction.api.gateway.mapper;
+package com.iss.interaction.api.resource.mapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iss.interaction.api.resource.IssStatusResource;
+import com.iss.interaction.api.resource.IssAstronauts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class IssStatusMapper {
+public class AstronautMapper {
 
-    public IssStatusResource toResource(String content) {
+    public IssAstronauts toResource(String content) {
         ObjectMapper mapper = new ObjectMapper();
-        IssStatusResource resource = new IssStatusResource();
+        IssAstronauts resource = new IssAstronauts();
 
         try {
-            resource = mapper.readValue(content, IssStatusResource.class);
+            resource = mapper.readValue(content, IssAstronauts.class);
         } catch (Exception e) {
             log.error("Error while converting Iss API response");
         }
