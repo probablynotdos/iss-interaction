@@ -7,5 +7,6 @@ public class Astronaut {
 
     private String name;
     private String craft;
+    private String formattedName;
 
 }

@@ -1,9 +1,9 @@
 package com.iss.interaction.api.controller;
 
-import com.iss.interaction.api.gateway.IssApiGateway;
 import com.iss.interaction.api.resource.Astronaut;
-import com.iss.interaction.api.resource.IssLocation;
 import com.iss.interaction.api.resource.Location;
+import com.iss.interaction.api.service.AstronautsService;
+import com.iss.interaction.api.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,23 +15,22 @@ import java.util.List;
 public class IssController {
 
     @Autowired
-    private IssApiGateway gateway;
+    private LocationService locationService;
+
+    @Autowired
+    private AstronautsService astronautsService;
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/location")
     private Location getLocation() {
-        IssLocation resource = gateway.getCurrentLocation();
 
-        final String latitude = resource.getPosition().getLatitude();
-        final String longitude = resource.getPosition().getLongitude();
-
-        return new Location(latitude, longitude, resource.getTimestamp());
+        return locationService.getLocation();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/astronauts")
     private List<Astronaut> getAstronauts() {
 
-        return gateway.getAstronautsInSpace().getPeople();
+        return astronautsService.getAstronauts();
     }
 }
